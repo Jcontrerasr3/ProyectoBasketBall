@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./plantilla/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <div id="container"  style="margin-top: 50px; margin-left: 30px" >    
+                    <div id="menu" align="center" style="margin-top: 0px">    
+                        <h:form>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel  value="Registrar Joven Practicante  " />
+                                <p:commandLink action="#{beanAdmin.registrarJoven()}">
+                                    <h:graphicImage value="#{resource['images:boton.jpg']}" width="50px" height="30px" />
+                                </p:commandLink>
+                                <p:outputLabel  value="Registrar Entrenador " /> 
+                                <p:commandLink action="#{beanAdmin.registrarEntrenador()}">
+                                    <h:graphicImage value="#{resource['images:boton.jpg']}" width="50px" height="30px" />
+                                </p:commandLink >
+                                <p:outputLabel  value="Registrar Pago" /> 
+                                <p:commandLink action="#{beanAdmin.pagos()}">
+                                    <h:graphicImage value="#{resource['images:boton.jpg']}" width="50px" height="30px" />
+                                </p:commandLink>
+                                <p:outputLabel  value="Consultar Pagos" /> 
+                                <p:commandLink action="#{beanAdmin.consultaPagos()}">
+                                    <h:graphicImage value="#{resource['images:boton.jpg']}" width="50px" height="30px" />
+                                </p:commandLink>
+                            </p:panelGrid>
+                           
+                        </h:form>
+                    </div>
+                    <div align="right" style="margin-right: 80px">
+                                 <h:graphicImage value="#{resource['images:logo.png']}" width="143px" height="171px" style="margin-top: -450px"/>
+                            </div>
+                    <h:graphicImage value="#{resource['images:user.png']}" width="143px" height="171px" style="margin-top: -550px"/>
+                    <br/>
+                    <br/>
+                    <h:outputLabel value="Nombre"></h:outputLabel>
+                    <br/>
+                    <br/>
+                    <h:form>
+                        <p:commandButton value="Cerrar Sesion" action="#{beanAdmin.cerrarSesion()}"/>  
+                    </h:form>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

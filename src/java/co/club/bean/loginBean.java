@@ -47,12 +47,24 @@ public class loginBean implements Serializable {
         v.setPassword(password);
         OperLogin oper = new OperLogin();
         boolean resut = oper.login(v, rol);
-        
+        System.err.println(rol);
         if (resut==true) {
             try {
                 Map session= FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
                 session.put("usuario", v);
-                FacesContext.getCurrentInstance().getExternalContext().redirect("Admin.xhtml");
+                if(null!=rol)switch (rol) {
+                    case "Administrador":
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("Admin.xhtml");
+                        break;
+                    case "JovenPracticante":
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("JovenPracticante.xhtml");
+                        break;
+                    case "Entrenador":
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("Entrenador.xhtml");
+                        break;
+                    default:
+                        break;
+                }
             } catch (IOException ex) {
                LOG.error("Se presento el siguiente error: ", ex);
             }

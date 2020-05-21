@@ -8,6 +8,7 @@ package co.club.bean;
 
 import co.club.dto.Usuario;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,7 @@ import org.apache.logging.log4j.LogManager;
  */
 @ManagedBean
 @javax.faces.bean.ViewScoped
-public class BeanAdmin {
+public class BeanAdmin implements Serializable{
 
     private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     private Usuario usu = (Usuario) session.get("usuario");

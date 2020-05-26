@@ -38,7 +38,7 @@ public class loginBean implements Serializable {
     }
 
     public void loginProject() {
-        if (nombre == null || nombre.isEmpty()) {
+        if (nombre == null || nombre.isEmpty() || password == null || password.isEmpty()||rol == null || rol.isEmpty()) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención", "Faltan Datos por llenar"));
 
         }
@@ -46,8 +46,8 @@ public class loginBean implements Serializable {
         v.setUsuario(nombre);
         v.setPassword(password);
         OperLogin oper = new OperLogin();
-        boolean resut = oper.login(v, rol);
-        System.err.println(rol);
+        boolean resut = oper.login(v);
+        
         if (resut==true) {
             try {
                 Map session= FacesContext.getCurrentInstance().getExternalContext().getSessionMap();

@@ -6,6 +6,8 @@
 package co.club.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
+
 
 /**
  *
@@ -15,7 +17,7 @@ public class Pago implements Serializable{
    private long idPago;
    private String TipoPago;
    private String DescripcionPago;
-   private String Fechapago;
+   private Date Fechapago;
    private long idJovenpracticante;
    private long idAdmin;
     public Pago() {
@@ -45,13 +47,19 @@ public class Pago implements Serializable{
         this.DescripcionPago = DescripcionPago;
     }
 
-    public String getFechapago() {
+    public Date getFechapago() {
         return Fechapago;
     }
 
-    public void setFechapago(String Fechapago) {
+    public void setFechapago(Date Fechapago) {
         this.Fechapago = Fechapago;
     }
+
+    
+
+    
+
+   
 
     public long getIdJovenpracticante() {
         return idJovenpracticante;

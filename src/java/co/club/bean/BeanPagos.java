@@ -6,15 +6,21 @@
 package co.club.bean;
 
 import co.club.dao.OperAdmin;
+import co.club.dto.JovenPracticante;
 import co.club.dto.Pago;
+import co.club.dto.Usuario;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -27,21 +33,22 @@ import org.apache.logging.log4j.LogManager;
 public class BeanPagos implements Serializable {
 
     private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger(BeanAdmin.class);
-    private int idpago;
     private String tipopago;
     private String descripcion;
     private Date fecha;
-    private int idJoven;
-    private int idAdmin;
-
+    private List<SelectItem> listidjoven;
+    private JovenPracticante idjoven;
+     private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+    private Usuario usu = (Usuario) session.get("usuario");
+    private String nombre = usu.getUsuario();
+    private Usuario datos;
     public BeanPagos() {
-
+        idjoven= new JovenPracticante();
     }
 
-    public void cerrarSesion() {
+    public void volver() {
         try {
-            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("Admin.xhtml");
         } catch (IOException ex) {
             LOG.error("Se presento el siguiente Error: ", ex);
         }
@@ -55,21 +62,18 @@ public class BeanPagos implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención", "Faltan Datos por llenar"));
             return;
         }
-        if (idJoven < 0 || idAdmin < 0 || idpago < 0) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención", "Faltan Datos por llenar"));
-            return;
-        }
+       
         java.util.Date fecha1 = new java.util.Date();
         fecha = new java.sql.Date((fecha1.getTime()));
         System.out.println("inicio" + fecha);
-
+       
         Pago p = new Pago();
-        p.setIdPago(idpago);
         p.setTipoPago(tipopago);
         p.setDescripcionPago(descripcion);
         p.setFechapago(fecha);
-        p.setIdJovenpracticante(idJoven);
-        p.setIdAdmin(idAdmin);
+        p.setIdJovenpracticante(idjoven.getUsuJovenPracticante());
+        p.setIdAdmin(nombre);
+        
         OperAdmin oper = new OperAdmin();
         int rta = oper.insertarpago(p);
         if (rta == 1) {
@@ -77,14 +81,6 @@ public class BeanPagos implements Serializable {
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "EROR", "PAGO NO REGISTRADO"));
         }
-    }
-
-    public int getIdpago() {
-        return idpago;
-    }
-
-    public void setIdpago(int idpago) {
-        this.idpago = idpago;
     }
 
     public String getTipopago() {
@@ -111,22 +107,52 @@ public class BeanPagos implements Serializable {
         this.fecha = fecha;
     }
 
-   
+ 
 
-    public int getIdJoven() {
-        return idJoven;
+    public List<SelectItem> getListidjoven() {
+        this.listidjoven=new ArrayList<SelectItem>();
+        OperAdmin oper= new OperAdmin();
+        List<JovenPracticante> j= oper.consultarJoven();
+        for (JovenPracticante idjoves: j){
+        SelectItem   idjovenItem= new SelectItem(idjoves.getUsuJovenPracticante());
+        this.listidjoven.add(idjovenItem);
+        
+        }
+        return listidjoven;
     }
 
-    public void setIdJoven(int idJoven) {
-        this.idJoven = idJoven;
+    public void setListidjoven(List<SelectItem> listidjoven) {
+        this.listidjoven = listidjoven;
     }
 
-    public int getIdAdmin() {
-        return idAdmin;
+    public JovenPracticante getIdjoven() {
+        return idjoven;
     }
 
-    public void setIdAdmin(int idAdmin) {
-        this.idAdmin = idAdmin;
+    public void setIdjoven(JovenPracticante idjoven) {
+        this.idjoven = idjoven;
     }
+
+    public Usuario buscarJoven() {
+        
+      
+            long pk= idjoven.getUsuJovenPracticante();
+            OperAdmin oper = new OperAdmin();
+            Usuario rta = oper.buscarjoven(pk);
+              this.datos=rta;
+    
+           
+        return (Usuario) datos;
+    } 
+
+    public Usuario getDatos() {
+        return (Usuario) datos;
+    }
+
+    public void setDatos(Usuario datos) {
+        this.datos = datos;
+    }
+
+  
 
 }

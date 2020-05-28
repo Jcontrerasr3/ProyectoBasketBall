@@ -19,6 +19,11 @@ public class JovenPracticante {
      public JovenPracticante() {
      }
 
+    public JovenPracticante(long idPracticante, long UsuJovenPracticante) {
+        this.idPracticante=idPracticante;
+        this.UsuJovenPracticante=UsuJovenPracticante;
+    }   
+
     public long getIdPracticante() {
         return idPracticante;
     }
@@ -58,5 +63,9 @@ public class JovenPracticante {
     public void setEnfoqueJoven(String EnfoqueJoven) {
         this.EnfoqueJoven = EnfoqueJoven;
     }
+
+   
+    
+    
     
 }

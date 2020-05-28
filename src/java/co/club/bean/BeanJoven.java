@@ -5,7 +5,6 @@
  */
 package co.club.bean;
 
-
 import co.club.dto.Usuario;
 import java.io.IOException;
 import java.util.Map;
@@ -20,13 +19,16 @@ import org.apache.logging.log4j.LogManager;
 @ManagedBean
 @javax.faces.bean.ViewScoped
 public class BeanJoven {
- private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+
+    private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     private Usuario usu = (Usuario) session.get("usuario");
- private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger(BeanJoven.class);
+    private String nombre = usu.getUsuario();
+    private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger(BeanJoven.class);
+
     public BeanJoven() {
     }
-    
-        public void cerrarSesion()  {
+
+    public void cerrarSesion() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
@@ -35,28 +37,30 @@ public class BeanJoven {
         }
 
     }
-    
-         public void consultarEvento()  {
+
+    public void consultarEvento() {
         try {
-           
+
             FacesContext.getCurrentInstance().getExternalContext().redirect("ListarEvento.xhtml");
         } catch (IOException ex) {
             LOG.error("Se presento el siguiente Error: ", ex);
         }
 
     }
-       public void consultarPagos()  {
+
+    public void consultarPagos() {
         try {
-           
+
             FacesContext.getCurrentInstance().getExternalContext().redirect("ListarPagos.xhtml");
         } catch (IOException ex) {
             LOG.error("Se presento el siguiente Error: ", ex);
         }
 
     }
-     public void verHojaDeportiva()  {
+
+    public void verHojaDeportiva() {
         try {
-           
+
             FacesContext.getCurrentInstance().getExternalContext().redirect("ConsultarHD.xhtml");
         } catch (IOException ex) {
             LOG.error("Se presento el siguiente Error: ", ex);
@@ -79,6 +83,13 @@ public class BeanJoven {
     public void setUsu(Usuario usu) {
         this.usu = usu;
     }
-    
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 }

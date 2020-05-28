@@ -32,16 +32,20 @@
                                     <h:graphicImage value="#{resource['images:boton.jpg']}" width="50px" height="30px" />
                                 </p:commandLink>
                             </p:panelGrid>
-                           
+
                         </h:form>
                     </div>
                     <div align="right" style="margin-right: 80px">
-                                 <h:graphicImage value="#{resource['images:logo.png']}" width="143px" height="171px" style="margin-top: -450px"/>
-                            </div>
+                        <h:graphicImage value="#{resource['images:logo.png']}" width="143px" height="171px" style="margin-top: -450px"/>
+                    </div>
                     <h:graphicImage value="#{resource['images:user.png']}" width="143px" height="171px" style="margin-top: -550px"/>
                     <br/>
                     <br/>
-                    <h:outputLabel value="Nombre"></h:outputLabel>
+                    <h:outputLabel value="Administrador"></h:outputLabel>
+                    <br/>
+                    <br/>
+                    <h:outputLabel value="Usuario: "></h:outputLabel>
+                    <h:outputLabel value="#{beanAdmin.nombre}"></h:outputLabel>
                     <br/>
                     <br/>
                     <h:form>

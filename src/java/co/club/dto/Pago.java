@@ -14,22 +14,14 @@ import java.sql.Date;
  * @author Familia
  */
 public class Pago implements Serializable{
-   private long idPago;
    private String TipoPago;
    private String DescripcionPago;
    private Date Fechapago;
-   private long idJovenpracticante;
-   private long idAdmin;
+   private Long idJovenpracticante;
+   private String idAdmin;
+    
     public Pago() {
           }
-
-    public long getIdPago() {
-        return idPago;
-    }
-
-    public void setIdPago(long idPago) {
-        this.idPago = idPago;
-    }
 
     public String getTipoPago() {
         return TipoPago;
@@ -55,26 +47,31 @@ public class Pago implements Serializable{
         this.Fechapago = Fechapago;
     }
 
-    
-
-    
-
-   
-
-    public long getIdJovenpracticante() {
+    public Long getIdJovenpracticante() {
         return idJovenpracticante;
     }
 
-    public void setIdJovenpracticante(long idJovenpracticante) {
+    public void setIdJovenpracticante(Long idJovenpracticante) {
         this.idJovenpracticante = idJovenpracticante;
     }
 
-    public long getIdAdmin() {
+   
+
+   
+
+    public String getIdAdmin() {
         return idAdmin;
     }
 
-    public void setIdAdmin(long idAdmin) {
+    public void setIdAdmin(String idAdmin) {
         this.idAdmin = idAdmin;
     }
+
+    
+
+ 
+
+    
+    
     
 }

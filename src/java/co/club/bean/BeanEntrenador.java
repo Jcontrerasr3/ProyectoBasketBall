@@ -23,6 +23,7 @@ import org.apache.logging.log4j.LogManager;
 public class BeanEntrenador {
     private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     private Usuario usu = (Usuario) session.get("usuario");
+    private String nombre = usu.getUsuario();
     private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger(BeanEntrenador.class);
     public BeanEntrenador() {
     }
@@ -79,6 +80,14 @@ public class BeanEntrenador {
 
     public void setUsu(Usuario usu) {
         this.usu = usu;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
 }

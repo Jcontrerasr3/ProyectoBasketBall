@@ -32,6 +32,7 @@ public class loginBean implements Serializable {
     private String nombre;
     private String password;
     private String rol;
+ 
     private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger(loginBean.class);
      public loginBean() {
         
@@ -45,9 +46,11 @@ public class loginBean implements Serializable {
         Usuario v = new Usuario();
         v.setUsuario(nombre);
         v.setPassword(password);
+       
         OperLogin oper = new OperLogin();
-        boolean resut = oper.login(v);
         
+        boolean resut = oper.login(v, rol);
+       
         if (resut==true) {
             try {
                 Map session= FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -96,6 +99,8 @@ public class loginBean implements Serializable {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+  
     
     
 }

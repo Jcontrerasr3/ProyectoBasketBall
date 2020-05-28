@@ -40,7 +40,7 @@ public class BeanPagos implements Serializable {
     private JovenPracticante idjoven;
      private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     private Usuario usu = (Usuario) session.get("usuario");
-    private String nombre = usu.getUsuario();
+    private String nombre = usu.getPrimer_nombre();
     private Usuario datos;
     public BeanPagos() {
         idjoven= new JovenPracticante();
@@ -135,13 +135,11 @@ public class BeanPagos implements Serializable {
 
     public Usuario buscarJoven() {
         
-      
-            long pk= idjoven.getUsuJovenPracticante();
+            long pk = Long.parseLong(idjoven.getUsuJovenPracticante());
             OperAdmin oper = new OperAdmin();
             Usuario rta = oper.buscarjoven(pk);
-              this.datos=rta;
+            this.datos=rta;
     
-           
         return (Usuario) datos;
     } 
 

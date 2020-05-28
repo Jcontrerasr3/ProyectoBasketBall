@@ -10,8 +10,8 @@ package co.club.dto;
  * @author Familia
  */
 public class JovenPracticante {
-     private long idPracticante;
-     private long UsuJovenPracticante;
+     private String idPracticante;
+     private String UsuJovenPracticante;
      private int TipoMensualidad;
      private int NivelJoven;
      private String EnfoqueJoven;
@@ -19,24 +19,24 @@ public class JovenPracticante {
      public JovenPracticante() {
      }
 
-    public JovenPracticante(long idPracticante, long UsuJovenPracticante) {
+    public JovenPracticante(String idPracticante, String UsuJovenPracticante) {
         this.idPracticante=idPracticante;
         this.UsuJovenPracticante=UsuJovenPracticante;
     }   
 
-    public long getIdPracticante() {
+    public String getIdPracticante() {
         return idPracticante;
     }
 
-    public void setIdPracticante(long idPracticante) {
+    public void setIdPracticante(String idPracticante) {
         this.idPracticante = idPracticante;
     }
 
-    public long getUsuJovenPracticante() {
+    public String getUsuJovenPracticante() {
         return UsuJovenPracticante;
     }
 
-    public void setUsuJovenPracticante(long UsuJovenPracticante) {
+    public void setUsuJovenPracticante(String UsuJovenPracticante) {
         this.UsuJovenPracticante = UsuJovenPracticante;
     }
 

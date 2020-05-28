@@ -29,7 +29,7 @@ public class AdminConexion {
         
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/Baloncesto", "unicentral", "123");
+            Connection c = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/Baloncesto2", "unicentral", "123");
                
             return c;
          

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="./plantilla/plantilla.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="top">
+        Registrar Joven Practicante
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Identificacion Joven" for="identJov" />
+                <h:inputText id="identJov" value="#{beanRegisJov.identJov}" style="width: 200px;"/>
+                <h:outputLabel value="Primer Nombre" for="pri_nom"/>
+                <h:inputText id="pri_nom" value="#{beanRegisJov.pri_nom}" style="width: 200px;"/>
+                <h:outputLabel value="Segundo Nombre" for="seg_nom"/>
+                <h:inputText id="seg_nom" value="#{beanRegisJov.seg_nom}" style="width: 200px;"/>
+                <h:outputLabel value="Primer Apellido" for="pri_apl"/>
+                <h:inputText id="pri_apl" value="#{beanRegisJov.pri_apl}" style="width: 200px;"/>
+                <h:outputLabel value="Segundo Apellido" for="seg_apl"/>
+                <h:inputText id="seg_apl" value="#{beanRegisJov.seg_apl}" style="width: 200px;"/>
+                <h:outputLabel value="Sexo" for="sex_jov"/>
+                <p:selectOneMenu id="sex_jov" value="#{beanRegisJov.sex_jov}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                    <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="3 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                <h:outputLabel value="Contraseña" for="clav_jov"/>
+                <h:inputText id="clav_jov" value="#{beanRegisJov.clav_jov}" style="width: 200px;"/>
+                <h:outputLabel value="Tipo mensualidad" for="tip_men"/>
+                <p:selectOneMenu id="tip_men" value="#{beanRegisJov.tip_men}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="1 dia" itemValue="1" />
+                    <f:selectItem itemLabel="2 dias" itemValue="2" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="3 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                <h:outputLabel value="Nivel" for="niv_jov"/>
+                <p:selectOneMenu id="niv_jov" value="#{beanRegisJov.niv_jov}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Principiante" itemValue="1" />
+                    <f:selectItem itemLabel="Intermedio" itemValue="2" />
+                    <f:selectItem itemLabel="Avanzado" itemValue="3" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="4 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                <h:outputLabel value="Enfoque" for="enfo_jov"/>
+                <p:selectOneMenu id="enfo_jov" value="#{beanRegisJov.enfo_jov}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Ataque" itemValue="Ataque" />
+                    <f:selectItem itemLabel="Defensa" itemValue="Defensa" />
+                    <f:selectItem itemLabel="Medio" itemValue="Medio" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="4 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                <p:commandButton value="Registrar" action="#{beanRegisJov.registrarJoven()}" update="@form"/>
+                <p:commandButton value="Volver" action="#{beanRegisJov.volver()}"/>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

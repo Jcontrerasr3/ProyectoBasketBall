@@ -29,8 +29,6 @@ private String rol;
         this.primer_apellido = primer_apellido;
     }
 
-   
-
     public String getUsuario() {
         return usuario;
     }

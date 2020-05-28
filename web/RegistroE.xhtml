@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="./plantilla/plantilla.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:define name="top">
+        Registrar Entrenador
+    </ui:define>
+    
+    <ui:define name="content">
+        <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Identificacion Entrenador" for="identEnt" />
+                <h:inputText id="identEnt" value="#{beanRegisEnt.identEnt}" style="width: 200px;"/>
+                <h:outputLabel value="Primer Nombre" for="pri_nom"/>
+                <h:inputText id="pri_nom" value="#{beanRegisEnt.pri_nom}" style="width: 200px;"/>
+                <h:outputLabel value="Segundo Nombre" for="seg_nom"/>
+                <h:inputText id="seg_nom" value="#{beanRegisEnt.seg_nom}" style="width: 200px;"/>
+                <h:outputLabel value="Primer Apellido" for="pri_apl"/>
+                <h:inputText id="pri_apl" value="#{beanRegisEnt.pri_apl}" style="width: 200px;"/>
+                <h:outputLabel value="Segundo Apellido" for="seg_apl"/>
+                <h:inputText id="seg_apl" value="#{beanRegisEnt.seg_apl}" style="width: 200px;"/>
+                <h:outputLabel value="Sexo" for="sex_ent"/>
+                <p:selectOneMenu id="sex_ent" value="#{beanRegisEnt.sex_ent}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                    <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="3 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                <h:outputLabel value="Contraseña" for="clav_ent"/>
+                <h:inputText id="clav_ent" value="#{beanRegisEnt.clav_ent}" style="width: 200px;"/>
+                <h:outputLabel value="Especialidad" for="esp_ent"/>
+                <h:inputText id="esp_ent" value="#{beanRegisEnt.esp_ent}" style="width: 200px;"/>
+                <p:commandButton value="Registrar" action="#{beanRegisEnt.registrarEntrenador()}" update="@form"/>
+                <p:commandButton value="Volver" action="#{beanRegisEnt.volver()}"/>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

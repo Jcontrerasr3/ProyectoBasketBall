@@ -12,20 +12,13 @@ import java.io.Serializable;
  * @author Familia
  */
 public class Entrenador implements Serializable{
-    private long idEntrenador;
+    private String idEntrenador;
     private String Especialidad;
-    private long usuEntrenador;
+    private String usuEntrenador;
     
      public Entrenador() {
      }
 
-    public long getIdEntrenador() {
-        return idEntrenador;
-    }
-
-    public void setIdEntrenador(long idEntrenador) {
-        this.idEntrenador = idEntrenador;
-    }
 
     public String getEspecialidad() {
         return Especialidad;
@@ -35,11 +28,19 @@ public class Entrenador implements Serializable{
         this.Especialidad = Especialidad;
     }
 
-    public long getUsuEntrenador() {
+    public String getIdEntrenador() {
+        return idEntrenador;
+    }
+
+    public void setIdEntrenador(String idEntrenador) {
+        this.idEntrenador = idEntrenador;
+    }
+
+    public String getUsuEntrenador() {
         return usuEntrenador;
     }
 
-    public void setUsuEntrenador(long usuEntrenador) {
+    public void setUsuEntrenador(String usuEntrenador) {
         this.usuEntrenador = usuEntrenador;
     }
     

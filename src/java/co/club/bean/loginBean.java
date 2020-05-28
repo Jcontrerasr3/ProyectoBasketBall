@@ -39,7 +39,7 @@ public class loginBean implements Serializable {
     }
 
     public void loginProject() {
-        if (nombre == null || nombre.isEmpty() || password == null || password.isEmpty()||rol == null || rol.isEmpty()) {
+        if (nombre == null || password == null || password.isEmpty()||rol == null || rol.isEmpty()) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención", "Faltan Datos por llenar"));
 
         }

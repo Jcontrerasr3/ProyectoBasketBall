@@ -17,12 +17,11 @@
             </p:messages>
             <h:panelGrid columns="2" >
                 <h:outputLabel value="Identificacion Joven" for="idJoven" />
-                <p:selectOneMenu id="idJoven" value="#{beanPagos.idjoven.idPracticante}"  style="width:200px">
+                <p:selectOneMenu id="idJoven" value="#{beanPagos.idjoven.usuJovenPracticante}"  style="width:200px" >
                     <f:selectItem itemLabel="Seleccione" itemValue="" />
                     <f:selectItems value="#{beanPagos.listidjoven}" />     
                 </p:selectOneMenu> 
-                <p:commandButton value="buscar" action="#{beanPagos.buscarJoven()}" />   
-                <br/>
+         
                 <h:outputLabel value="Tipo Pago" for="tipopago" />
                 <p:selectOneMenu id="tipopago" value="#{beanPagos.tipopago}" style="width:200px">
                     <f:selectItem itemLabel="Seleccione" itemValue="" />
@@ -37,9 +36,8 @@
                 <h:inputTextarea id="descripcion" value="#{beanPagos.descripcion}" style="height: 77px; width: 350px;"/>
                 <p:commandButton value="Registrar" action="#{beanPagos.registrarPago()}" update="messages"/>
                 <p:commandButton value="Volver" action="#{beanPagos.volver()}" update="messages"/>   
-
-                <h:outputLabel value="Datos del joven practicante Seleccionado" for="Datos" />
-                <h:outputText id="datos" value="#{beanPagos.datos.primer_nombre}" style="height: 77px; width: 350px;"/>
+           
+                
             </h:panelGrid>
         </h:form>
     </ui:define>

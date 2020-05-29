@@ -19,10 +19,18 @@ public class Pago implements Serializable{
    private Date Fechapago;
    private String idJovenpracticante;
    private String idAdmin;
-    
+   private int idpago; 
     public Pago() {
           }
 
+     public Pago(String TipoPago, String DescripcionPago, Date Fechapago, int idpago, String idAdmin, String idJovenpracticante) {
+        this.TipoPago = TipoPago;
+        this.DescripcionPago = DescripcionPago;
+        this.Fechapago = Fechapago;
+        this.idJovenpracticante = idJovenpracticante;
+        this.idAdmin = idAdmin;
+        this.idpago = idpago;
+    }
     public String getTipoPago() {
         return TipoPago;
     }
@@ -62,6 +70,16 @@ public class Pago implements Serializable{
     public void setIdAdmin(String idAdmin) {
         this.idAdmin = idAdmin;
     }
+
+    public int getIdpago() {
+        return idpago;
+    }
+
+    public void setIdpago(int idpago) {
+        this.idpago = idpago;
+    }
+
+  
 
     
 

@@ -38,12 +38,13 @@ public class BeanPagos implements Serializable {
     private Date fecha;
     private List<SelectItem> listidjoven;
     private JovenPracticante idjoven;
-     private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+    private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     private Usuario usu = (Usuario) session.get("usuario");
-    private String nombre = usu.getPrimer_nombre();
+    
     private Usuario datos;
     public BeanPagos() {
         idjoven= new JovenPracticante();
+        this.datos= new Usuario();
     }
 
     public void volver() {
@@ -66,13 +67,14 @@ public class BeanPagos implements Serializable {
         java.util.Date fecha1 = new java.util.Date();
         fecha = new java.sql.Date((fecha1.getTime()));
         System.out.println("inicio" + fecha);
-       
+        System.out.println("inicio" + usu.getUsuario());
+       System.out.println("asdf" + idjoven.getUsuJovenPracticante());
         Pago p = new Pago();
         p.setTipoPago(tipopago);
         p.setDescripcionPago(descripcion);
         p.setFechapago(fecha);
         p.setIdJovenpracticante(idjoven.getUsuJovenPracticante());
-        p.setIdAdmin(nombre);
+        p.setIdAdmin(usu.getUsuario());
         
         OperAdmin oper = new OperAdmin();
         int rta = oper.insertarpago(p);
@@ -114,7 +116,7 @@ public class BeanPagos implements Serializable {
         OperAdmin oper= new OperAdmin();
         List<JovenPracticante> j= oper.consultarJoven();
         for (JovenPracticante idjoves: j){
-        SelectItem   idjovenItem= new SelectItem(idjoves.getUsuJovenPracticante());
+        SelectItem   idjovenItem= new SelectItem(idjoves.getIdPracticante());
         this.listidjoven.add(idjovenItem);
         
         }
@@ -133,15 +135,7 @@ public class BeanPagos implements Serializable {
         this.idjoven = idjoven;
     }
 
-    public Usuario buscarJoven() {
-        
-            long pk = Long.parseLong(idjoven.getUsuJovenPracticante());
-            OperAdmin oper = new OperAdmin();
-            Usuario rta = oper.buscarjoven(pk);
-            this.datos=rta;
-    
-        return (Usuario) datos;
-    } 
+
 
     public Usuario getDatos() {
         return (Usuario) datos;

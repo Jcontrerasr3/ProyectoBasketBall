@@ -71,10 +71,11 @@ public class BeanRegisJov implements Serializable {
         String rta = oper.insertarJoven(u, jp);
         System.out.println(rta);
 
-        if (rta.equals("11")) {
+        if (rta.equals("11")) { 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "JOVEN PRACTICANTE REGISTRADO"));
+            LOG.debug("SE INSERTO NUEVO ESTUDIANTE");
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "EROR", "JOVEN PRACTICANTE NO REGISTRADO"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "EROR", "JOVEN PRACTICANTE NO REGISTRADO PUEDE QUE YA SE ENCUENTRE REGISTRADO"));
         }
 
         identJov = null;

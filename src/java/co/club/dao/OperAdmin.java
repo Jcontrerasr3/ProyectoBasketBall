@@ -5,6 +5,7 @@
  */
 package co.club.dao;
 
+import co.club.bean.BeanAdmin;
 import co.club.dto.Entrenador;
 import co.club.dto.JovenPracticante;
 import co.club.dto.Pago;
@@ -17,13 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  *
  * @author Familia
  */
 public class OperAdmin {
-
+    private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger(BeanAdmin.class);
     public int insertarpago(Pago dato) {
         Connection c = new AdminConexion().getConnection();
         if (c != null) {
@@ -175,6 +177,33 @@ public class OperAdmin {
         }
         return encontradousuario;
 
+    }
+
+    public List<Pago> consultaPago() {
+          List<Pago> lista = new ArrayList<Pago>();
+
+       Connection c = new AdminConexion().getConnection();
+       if (c != null) {
+
+           PreparedStatement ps;
+           try {
+               ps = c.prepareStatement("SELECT tipopago, descripcionpago, fechapago, idpago, iden_pago_admin, iden_pago_prac\n" +
+"	FROM pago;");
+
+               ResultSet results = ps.executeQuery();
+
+               while (results.next()) {
+
+                   lista.add(new Pago(results.getString(1), results.getString(2), results.getDate(3), results.getInt(4), results.getString(5), results.getString(6) ));
+               }
+
+           } catch (SQLException ex) {
+               LOG.error("Error al consultar los pagos", ex);
+           } finally {
+               new AdminConexion().cerrarConnexion(c);
+           }
+       }
+       return lista;
     }
 
 }

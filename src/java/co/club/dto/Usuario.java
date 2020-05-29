@@ -29,6 +29,19 @@ private String rol;
         this.primer_apellido = primer_apellido;
     }
 
+    public Usuario(String usuario, String password, String primer_nombre, String segundo_nombre, String primer_apellido, String segundo_apellido, String sexo, String rol) {
+        this.usuario = usuario;
+        this.password = password;
+        this.primer_nombre = primer_nombre;
+        this.segundo_nombre = segundo_nombre;
+        this.primer_apellido = primer_apellido;
+        this.segundo_apellido = segundo_apellido;
+        this.sexo = sexo;
+        this.rol = rol;
+    }
+
+   
+
     public String getUsuario() {
         return usuario;
     }

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./plantilla/plantilla.xhtml">
+           
+            <ui:define name="content">
+                <h:form>
+                    <p:outputLabel value="#{beanListarpagoJoven.joven}"/>
+                    <p:dataTable var="dato" value="#{beanListarpagoJoven.pago}">
+            <p:column headerText="Identificacion Estudiante">
+                <h:outputText value="#{dato.idJovenpracticante}" />
+            </p:column>
+
+            <p:column headerText="Forma de pago">
+                <h:outputText value="#{dato.tipoPago}" />
+            </p:column>
+            
+            <p:column headerText="Descripcion">
+                <h:outputText value="#{dato.descripcionPago}" />
+            </p:column>
+
+            <p:column headerText="Fecha del pago">
+                <h:outputText value="#{dato.fechapago}" />
+            </p:column>
+          
+
+            <p:column headerText="Forma de pago">
+                <h:outputText value="#{dato.tipoPago}" />
+            </p:column>
+                     
+        </p:dataTable>
+                    <p:commandButton value="Volver" action="#{beanListarpagoJoven.salir()}" id="iconOnly" 
+                         style="margin-right:20px;" icon="pi pi-save" title="Ir ->" />
+        </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

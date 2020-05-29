@@ -28,7 +28,7 @@ public class BeanAdmin implements Serializable{
 
     private Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     private Usuario usu = (Usuario) session.get("usuario");
-    private String nombre = usu.getPrimer_nombre();
+    private String nombre = usu.getUsuario();
     private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger(BeanAdmin.class);
     public BeanAdmin() {
 

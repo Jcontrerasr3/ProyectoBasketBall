@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="./plantilla/plantilla.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                    
+    <ui:define name="top">
+        Registrar Hoja de Vida Deportiva
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Identificacion Joven" for="idPrac" />
+                <p:selectOneMenu id="idPrac" value="#{beanHvidaDep.idPrac.idPracticante}"  style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItems value="#{beanHvidaDep.listPrac}" />     
+                </p:selectOneMenu> 
+                <h:outputLabel value="Rendimiento" for="rendi_hv" />
+                <p:selectOneMenu id="rendi_hv" value="#{beanHvidaDep.rendi_hv}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Excelente" itemValue="5" />
+                    <f:selectItem itemLabel="Bueno" itemValue="4" />
+                    <f:selectItem itemLabel="Aceptable" itemValue="3" />
+                    <f:selectItem itemLabel="Malo" itemValue="2" />
+                    <f:selectItem itemLabel="Deficiente" itemValue="1" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="6 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                <h:outputLabel value="Habilidad" for="hab_hv" />
+                <p:selectOneMenu id="hab_hv" value="#{beanHvidaDep.hab_hv}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Excelente" itemValue="5" />
+                    <f:selectItem itemLabel="Buena" itemValue="4" />
+                    <f:selectItem itemLabel="Aceptable" itemValue="3" />
+                    <f:selectItem itemLabel="Mala" itemValue="2" />
+                    <f:selectItem itemLabel="Deficiente" itemValue="1" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="6 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                <h:outputLabel value="Compromiso" for="comp_hv" />
+                <p:selectOneMenu id="comp_hv" value="#{beanHvidaDep.comp_hv}" style="width:200px">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Excelente" itemValue="5" />
+                    <f:selectItem itemLabel="Bueno" itemValue="4" />
+                    <f:selectItem itemLabel="Aceptable" itemValue="3" />
+                    <f:selectItem itemLabel="Malo" itemValue="2" />
+                    <f:selectItem itemLabel="Deficiente" itemValue="1" />
+                    <f:facet name="footer">
+                        <p:separator />
+                        <h:outputText value="6 consoles" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+                                
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

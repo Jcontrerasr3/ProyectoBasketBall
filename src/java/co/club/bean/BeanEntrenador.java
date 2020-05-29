@@ -59,7 +59,7 @@ public class BeanEntrenador {
         public void registrarHojaDeportiva()  {
         try {
            
-            FacesContext.getCurrentInstance().getExternalContext().redirect("HDeportiva.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("RegistroHDeportiva.xhtml");
         } catch (IOException ex) {
             LOG.error("Se presento el siguiente Error: ", ex);
         }

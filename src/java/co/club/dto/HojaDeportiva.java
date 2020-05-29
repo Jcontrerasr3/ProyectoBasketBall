@@ -13,13 +13,15 @@ import java.io.Serializable;
  */
 public class HojaDeportiva implements Serializable{
     private long idHojaVida;
-    private long idenPracticante;
+    private String idenPracticante;
     private String Observaciones;
     private int Rendimiento;
     private int habilidad;
     private int compromiso;
     private long cursos;
     private long pago;
+    private long evento;
+    
      public HojaDeportiva() {
      }
 
@@ -31,14 +33,14 @@ public class HojaDeportiva implements Serializable{
         this.idHojaVida = idHojaVida;
     }
 
-    public long getIdenPracticante() {
+    public String getIdenPracticante() {
         return idenPracticante;
     }
 
-    public void setIdenPracticante(long idenPracticante) {
+    public void setIdenPracticante(String idenPracticante) {
         this.idenPracticante = idenPracticante;
     }
-
+    
     public String getObservaciones() {
         return Observaciones;
     }
@@ -85,6 +87,14 @@ public class HojaDeportiva implements Serializable{
 
     public void setPago(long pago) {
         this.pago = pago;
+    }
+
+    public long getEvento() {
+        return evento;
+    }
+
+    public void setEvento(long evento) {
+        this.evento = evento;
     }
     
 }
